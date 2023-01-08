@@ -6,6 +6,7 @@ import (
 	"net/http"
 
 	"code.gopub.tech/logs"
+	"code.gopub.tech/logs/pkg/arg"
 	"code.gopub.tech/wmm/model"
 	"github.com/gin-gonic/gin"
 	"github.com/youthlin/t"
@@ -20,7 +21,7 @@ func Use(h func(*gin.Context) (any, error)) gin.HandlerFunc {
 			response model.Response
 		)
 		defer func() {
-			logs.Info(c, t.T("url = %v, http code = %v, response = %v", c.Request.URL, httpCode, response))
+			logs.Info(c, t.T("url = %v, http code = %v, response = %v", c.Request.URL, httpCode, arg.JSON(response)))
 		}()
 		if err != nil {
 			var (
@@ -38,17 +39,17 @@ func Use(h func(*gin.Context) (any, error)) gin.HandlerFunc {
 				}
 			}
 			response = model.Response{
-				Code:     errorCode,
-				Messsage: msg,
-				Data:     nil,
+				Code:    errorCode,
+				Message: msg,
+				Data:    nil,
 			}
 			c.JSON(httpCode, response)
 			return
 		}
 		response = model.Response{
-			Code:     0,
-			Messsage: "ok",
-			Data:     result,
+			Code:    0,
+			Message: "ok",
+			Data:    result,
 		}
 		c.JSON(httpCode, response)
 	}
