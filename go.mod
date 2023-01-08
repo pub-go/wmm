@@ -8,9 +8,13 @@ require (
 	github.com/cyruzin/golang-tmdb v1.4.5
 	github.com/gin-gonic/gin v1.8.2
 	github.com/spf13/viper v1.14.0
+	github.com/youthlin/t v0.0.6
+	golang.org/x/text v0.5.0
 )
 
 require (
+	github.com/Xuanwo/go-locale v1.0.0 // indirect
+	github.com/antlr/antlr4/runtime/Go/antlr v0.0.0-20210803070921-b358b509191a // indirect
 	github.com/cockroachdb/logtags v0.0.0-20211118104740-dabe8e521a4f // indirect
 	github.com/cockroachdb/redact v1.1.3 // indirect
 	github.com/fsnotify/fsnotify v1.6.0 // indirect
@@ -44,7 +48,6 @@ require (
 	golang.org/x/crypto v0.0.0-20220525230936-793ad666bf5e // indirect
 	golang.org/x/net v0.4.0 // indirect
 	golang.org/x/sys v0.3.0 // indirect
-	golang.org/x/text v0.5.0 // indirect
 	google.golang.org/protobuf v1.28.1 // indirect
 	gopkg.in/ini.v1 v1.67.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect

@@ -1,0 +1,66 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: wmm\n"
+"POT-Creation-Date: 2023-01-08 18:18+0800\n"
+"PO-Revision-Date: 2023-01-08 18:19+0800\n"
+"Last-Translator: Youth．霖 <youthlinchen@outlook.com>\n"
+"Language-Team: https://code.gopub.tech/wmm\n"
+"Language: zh\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.2.2\n"
+"X-Poedit-Basepath: ../..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: T\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: hander.go:17
+msgid "request url=%v header=%v"
+msgstr "请求url=%v 请求头=%v"
+
+#: hander.go:25
+msgid "url = %v, http code = %v, response = %v"
+msgstr "请求路径 = %v, 状态码 = %v, 响应内容 = %v"
+
+#: hander/i18n.go:24
+msgid ""
+"client header accept-language is %v, parsed as %v. used language %v for this "
+"request"
+msgstr "客户端请求头指定的语言是 %v, 解析后是 %v. 本次请求使用语言是 %v"
+
+#: model/errors.go:41
+msgid "Invalid params"
+msgstr "参数错误"
+
+#: model/errors.go:45
+msgid "invalid account"
+msgstr "账号或密码错误"
+
+#: settings/settings.go:60
+msgid ""
+"system locale=%v. want use language=%v. used language=%v. supported "
+"language=[%v]"
+msgstr "系统语言=%v，指定语言=%v，使用语言=%v，支持的语言=[%v]"
+
+#: settings/settings.go:72
+msgid "executeable file path=%v, config file path=%v"
+msgstr "可执行文件目录=%v，配置文件目录=%v"
+
+#: settings/settings.go:76
+msgid "Read config file failed(%v)"
+msgstr "读取配置文件失败(%v)"
+
+#: settings/settings.go:79
+msgid "Unmarshal config file failed(%v)"
+msgstr "反序列化配置文件失败(%v)"
+
+#: settings/settings.go:81
+msgid "Read config file ok: %v"
+msgstr "读取配置文件成功：%v"
+
+#~ msgid ""
+#~ "Loaded Translations, supported locales=[%v], system locale is %v, current "
+#~ "locale is %v"
+#~ msgstr "翻译已加载，支持的语言有[%v]，系统语言是 %v，当前语言是 %v"

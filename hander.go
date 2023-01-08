@@ -8,15 +8,22 @@ import (
 	"code.gopub.tech/logs"
 	"code.gopub.tech/wmm/model"
 	"github.com/gin-gonic/gin"
+	"github.com/youthlin/t"
 )
 
-func Use(hander func(*gin.Context) (any, error)) gin.HandlerFunc {
+func Use(h func(*gin.Context) (any, error)) gin.HandlerFunc {
 	return func(c *gin.Context) {
-		logs.Info(c, "request url=%v header=%v", c.Request.URL, c.Request.Header)
-		response, err := hander(c)
+		logs.Info(c, t.T("request url=%v header=%v", c.Request.URL, c.Request.Header))
+		result, err := h(c)
+		var (
+			httpCode = http.StatusOK
+			response model.Response
+		)
+		defer func() {
+			logs.Info(c, t.T("url = %v, http code = %v, response = %v", c.Request.URL, httpCode, response))
+		}()
 		if err != nil {
 			var (
-				httpCode  = http.StatusInternalServerError
 				errorCode = int64(http.StatusInternalServerError)
 				msg       = fmt.Sprintf("系统错误: %v", err)
 			)
@@ -30,17 +37,19 @@ func Use(hander func(*gin.Context) (any, error)) gin.HandlerFunc {
 					msg = e.Message
 				}
 			}
-			c.JSON(httpCode, model.Response[any]{
+			response = model.Response{
 				Code:     errorCode,
 				Messsage: msg,
 				Data:     nil,
-			})
+			}
+			c.JSON(httpCode, response)
 			return
 		}
-		c.JSON(http.StatusOK, model.Response[any]{
+		response = model.Response{
 			Code:     0,
 			Messsage: "ok",
-			Data:     response,
-		})
+			Data:     result,
+		}
+		c.JSON(httpCode, response)
 	}
 }

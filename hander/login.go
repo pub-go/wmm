@@ -13,11 +13,12 @@ type LoginReq struct {
 
 func Login(c *gin.Context) (any, error) {
 	var req LoginReq
+	var t = GetTranslations(c)
 	if err := c.BindJSON(&req); err != nil {
-		return nil, model.ErrInvalidParams.WithCause(err)
+		return nil, model.ErrInvalidParams(t).WithCause(err)
 	}
 	if req.Username == settings.Instance.Username && req.Password == settings.Instance.Password {
 		return nil, nil
 	}
-	return nil, model.ErrInvalidAccount
+	return nil, model.ErrInvalidAccount(t)
 }

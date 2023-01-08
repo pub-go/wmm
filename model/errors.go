@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"code.gopub.tech/logs/pkg/arg"
+	"github.com/youthlin/t"
 )
 
 type ErrorCode struct {
@@ -36,7 +37,10 @@ func (e ErrorCode) WithCause(cause error) ErrorCode {
 	return e
 }
 
-var (
-	ErrInvalidParams  = ErrorCode{HttpCode: http.StatusBadRequest, ErrorCode: 1000, Message: "参数错误"}
-	ErrInvalidAccount = ErrorCode{HttpCode: http.StatusBadRequest, ErrorCode: 1001, Message: "账号或密码错误"}
-)
+func ErrInvalidParams(t *t.Translations) ErrorCode {
+	return ErrorCode{HttpCode: http.StatusBadRequest, ErrorCode: 1000, Message: t.T("Invalid params")}
+}
+
+func ErrInvalidAccount(t *t.Translations) ErrorCode {
+	return ErrorCode{HttpCode: http.StatusBadRequest, ErrorCode: 1000, Message: t.T("invalid account")}
+}

@@ -1,7 +1,7 @@
 package model
 
-type Response[T any] struct {
+type Response struct {
 	Code     int64  `json:"code"`
 	Messsage string `json:"messsage"`
-	Data     T      `json:"data"`
+	Data     any    `json:"data"`
 }
